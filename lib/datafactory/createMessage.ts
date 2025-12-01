@@ -1,11 +1,12 @@
 import { expect, request } from '@playwright/test';
+import path from 'path';
 import * as fs from 'fs';
 
 export async function createMessage(
   name: string,
   message: string,
   subject: string,
-  authFilePath: string
+  authFilePath: string = path.join(process.cwd(), '.auth', 'messageUser.json')
 ) {
   const storageData = JSON.parse(fs.readFileSync(authFilePath, 'utf8'));
   const token = storageData.origins[0].localStorage.find(
