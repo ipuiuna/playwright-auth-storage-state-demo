@@ -3,6 +3,7 @@ import { LoginPage } from '@pages/login/loginpage';
 import { registerUser } from '@datafactory/register';
 import { createMessage } from '@datafactory/createMessage';
 import { MessagesPage } from '@pages/account/messages.page';
+import path from 'path';
 
 test('Should create a new user and send a message to support and conffirms that message is displayed correctly', async ({
   page,
@@ -14,7 +15,7 @@ test('Should create a new user and send a message to support and conffirms that 
   const dropdownOptions = 'payments';
   const message =
     'This is a really long message that goes on an on for at least 50 characters';
-  const messageUserAuthFile = '.auth/messageUser.json';
+  const messageUserAuthFile = path.join(__dirname, '../.auth/messageUser.json');
   await test.step('create new user', async () => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
