@@ -5,9 +5,13 @@ import * as fs from 'fs';
 export async function createMessage(
   name: string,
   message: string,
-  subject: string,
-  authFilePath: string = path.join(process.cwd(), '.auth', 'messageUser.json')
+  subject: string
 ) {
+  const authFilePath: string = path.join(
+    process.cwd(),
+    '.auth',
+    'messageUser.json'
+  );
   const storageData = JSON.parse(fs.readFileSync(authFilePath, 'utf8'));
   const token = storageData.origins[0].localStorage.find(
     (item) => item.name === 'auth-token'

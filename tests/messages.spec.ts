@@ -36,12 +36,7 @@ test('Should create a new user and send a message to support and conffirms that 
   });
 
   await test.step('Creating a message', async () => {
-    await createMessage(
-      'Testy Mctesterface',
-      message,
-      dropdownOptions,
-      messageUserAuthFile
-    );
+    await createMessage('Testy Mctesterface', message, dropdownOptions);
   });
   await test.step('Verify the existency of the message', async () => {
     const messagesPage = new MessagesPage(page);
