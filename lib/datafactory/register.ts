@@ -2,6 +2,7 @@ import { request, expect } from '@playwright/test';
 
 export async function registerUser(email: string, password: string) {
   const apiURL = process.env.API_URL;
+  console.log('Api URL: ', apiURL);
   const userCreations = await request.newContext();
   const response = await userCreations.post(apiURL + '/users/register', {
     data: {
