@@ -42,7 +42,7 @@ test('Should create a new user and send a message to support and conffirms that 
   await test.step('Verify the existency of the message', async () => {
     const messagesPage = new MessagesPage(page);
     await messagesPage.goto();
-    await page.waitForLoadState('networkidle');
+    await messagesPage.table.waitFor({ state: 'visible' });
     await expect(messagesPage.table).toContainText(message.substring(0, 25));
     await expect(messagesPage.table).toContainText(dropdownOptions);
     await messagesPage.firstDetailLink.click();
